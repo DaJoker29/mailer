@@ -1,6 +1,6 @@
 {
   "name": "mailer",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Web service to send emails through a linked account",
   "main": "index.js",
   "scripts": {
