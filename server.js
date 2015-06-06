@@ -16,13 +16,19 @@ var transporter = mail.createTransport(config);
 app.use(bodyParser.json());
 app.use(morgan('combined'));
 
+var options;
+
 app.post('/', function (req, res) {
-    transporter.sendMail({
+    options = {
         from: config.auth.user,
         to: req.body.to,
         subject: 'AUTOMATED MESSAGE: ' + req.body.subject,
         text: req.body.message
-    }, function ( err, data ) {
+    };
+
+
+    console.log(options);
+    transporter.sendMail(options, function ( err ) {
         if ( err ) {
             res.status(400).end();
         } else {
@@ -32,5 +38,5 @@ app.post('/', function (req, res) {
 });
 
 var server = app.listen(3000, function() {
-    console.log('Express running on port %s', server.address().host, server.address().port);
+    console.log('Express running on port %s', server.address().port);
 });

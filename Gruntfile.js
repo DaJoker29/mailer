@@ -13,7 +13,7 @@ module.exports = function(grunt) {
                 options: {
                     script: 'server.js',
                     node_env: 'dev',
-                    debug: 'true'
+                    debug: true
                 }
             },
             prod: {
@@ -31,10 +31,13 @@ module.exports = function(grunt) {
                     spawn: false
                 }
             }
+        },
+        clean: {
+            logs: [ '*.log']
         }
     });
 
-    grunt.registerTask('start', 'Start server', []);
+    grunt.registerTask('start', 'Start server', ['express:prod']);
     grunt.registerTask('default', 'Start server with watch', ['express:dev', 'watch' ]);
 
 };
