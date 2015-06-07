@@ -20,7 +20,7 @@ app.use(morgan('combined'));
 
 var options;
 
-app.post('/', function (req, res) {
+app.post('/mailer/', function (req, res) {
     options = {
         from: config.auth.user,
         to: req.body.to,
