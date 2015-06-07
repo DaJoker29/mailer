@@ -7,12 +7,14 @@ var config = require('./config.json');
 // Middleware config
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var cors = require('cors');
 
 // Mail config
 var mail = require('nodemailer');
 var transporter = mail.createTransport(config);
 
 // Settings
+app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan('combined'));
 
